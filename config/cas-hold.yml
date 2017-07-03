@@ -1,0 +1,20 @@
+production:
+  frontend:
+    sso_name: 'CASino'
+    footer_text: 'Powered by <a href="http://rbcas.com/">CASino</a>'
+  authenticators:
+
+    my_company_sql_database:
+      authenticator: "ActiveRecord"
+      options:
+        connection:
+          adapter: "sqlite3"
+          database: db/cas-users.sqlite3
+          pool: 5
+          timeout: 5000
+        table: "users"
+        username_column: "username"
+        password_column: "password"
+        extra_attributes:
+          email: "email"
+          fullname: "displayname"
